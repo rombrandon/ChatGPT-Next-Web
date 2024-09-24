@@ -1779,6 +1779,15 @@ function _Chat() {
                                   )
                                 }
                               />
+                              <ChatAction
+                                text={Locale.Chat.Actions.Copy}
+                                icon={<ExportIcon />}
+                                onClick={() =>
+                                  copyToClipboard(
+                                    getMessageTextContent(message).match(/```(.*)```/)?.[1] || "",
+                                  )
+                                }
+                              />
                               {config.ttsConfig.enable && (
                                 <ChatAction
                                   text={
