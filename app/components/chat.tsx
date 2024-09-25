@@ -1528,10 +1528,10 @@ function _Chat() {
         inputRef.current?.focus();
       }
       // 复制最后一个代码块 command + shift + ;
+      // 复制最后一个代码块 alt + c;
       else if (
-        (event.metaKey || event.ctrlKey) &&
-        event.shiftKey &&
-        event.code === "Semicolon"
+        ((event.metaKey || event.ctrlKey) && event.shiftKey && event.code === "Semicolon") || 
+        (event.altKey && event.key.toLowerCase() === "c")
       ) {
         event.preventDefault();
         const copyCodeButton =
@@ -1776,15 +1776,6 @@ function _Chat() {
                                 onClick={() =>
                                   copyToClipboard(
                                     getMessageTextContent(message),
-                                  )
-                                }
-                              />
-                              <ChatAction
-                                text={Locale.Chat.Actions.Copy}
-                                icon={<ExportIcon />}
-                                onClick={() =>
-                                  copyToClipboard(
-                                    getMessageTextContent(message).match(/```(.*)```/)?.[1] || "",
                                   )
                                 }
                               />
